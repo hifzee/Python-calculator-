@@ -1,0 +1,31 @@
+# Avogadro's Number Calculator (CLI)
+AVOGADRO_NUMBER = 6.022e23
+
+try:
+    moles = float(input("Enter the number of moles: "))
+    particles = moles * AVOGADRO_NUMBER
+    print(f"{moles} moles contain {particles:.2e} particles.")
+except ValueError:
+    print("Please enter a valid number.")import tkinter as tk
+
+def calculate_particles():
+    try:
+        moles = float(entry.get())
+        particles = moles * 6.022e23
+        result_label.config(text=f"{particles:.2e} particles")
+    except ValueError:
+        result_label.config(text="Enter a valid number.")
+
+# GUI setup
+root = tk.Tk()
+root.title("Avogadro's Calculator")
+
+tk.Label(root, text="Enter moles:").pack()
+entry = tk.Entry(root)
+entry.pack()
+
+tk.Button(root, text="Calculate", command=calculate_particles).pack()
+result_label = tk.Label(root, text="")
+result_label.pack()
+
+root.mainloop()
